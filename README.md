@@ -104,7 +104,84 @@ This repository contains simple project ideas to help you prepare for Django RES
 
 ---
 
-### 9. **Performance & Caching API** (Advanced)
+### 4. **Library Management API** (Beginner-Intermediate)
+**Learning Focus**: Complex relationships, business logic, inventory patterns
+- Book catalog with author and genre relationships
+- Member management with different membership levels
+- Borrowing system with due dates and fines
+- Inventory tracking and reservation system
+- Automated business rules and processes
+
+**Key Concepts**: Complex Relationships, Business Logic, Inventory Management, Automated Processes
+
+---
+
+### 5. **Expense Tracker API** (Intermediate)
+**Learning Focus**: Financial data, analytics, reporting
+- Expense and income tracking
+- Category-based organization
+- Budget management and alerts
+- Financial reports and analytics
+- Recurring transactions
+- Data visualization ready endpoints
+
+**Key Concepts**: Financial Data Modeling, Aggregations, Date-based Filtering, Report Generation
+
+---
+
+### 6. **Recipe Sharing API** (Intermediate)
+**Learning Focus**: Content management, social features, search
+- Recipe creation with ingredients and instructions
+- User profiles and social following
+- Rating and review system
+- Advanced ingredient-based search
+- Meal planning and shopping lists
+- Nutritional information tracking
+
+**Key Concepts**: Content Management, Social Features, Advanced Search, Rating Systems
+
+---
+
+### 7. **Event Booking API** (Intermediate-Advanced)
+**Learning Focus**: Booking systems, payments, real-time features
+- Event creation and management
+- Real-time seat booking system
+- Payment gateway integration
+- Multi-tier pricing and discounts
+- QR code ticket generation
+- Booking analytics and reporting
+
+**Key Concepts**: Booking Systems, Payment Integration, Real-time Features, Complex Business Rules
+
+---
+
+### 8. **Inventory Management API** (Advanced)
+**Learning Focus**: Supply chain, automation, analytics
+- Multi-warehouse inventory tracking
+- Automated reordering systems
+- Supplier and purchase order management
+- Stock movement audit trails
+- Advanced analytics and forecasting
+- Barcode and batch tracking
+
+**Key Concepts**: Supply Chain Management, Automation, Advanced Analytics, Multi-location Architecture
+
+---
+
+### 9. **Learning Management API** (Advanced)
+**Learning Focus**: Content delivery, progress tracking, assessments
+- Course and lesson management
+- Student enrollment and progress tracking
+- Quiz and assignment systems
+- Discussion forums and collaboration
+- Certificate generation
+- Payment integration for premium content
+
+**Key Concepts**: Content Management, Progress Tracking, Assessment Systems, Role-based Permissions
+
+---
+
+### 10. **Performance & Caching API** (Advanced)
 **Learning Focus**: Performance optimization, caching strategies, database optimization
 - Redis caching for frequently accessed data
 - Database query optimization
@@ -119,17 +196,20 @@ This repository contains simple project ideas to help you prepare for Django RES
 
 ## 📚 Learning Path
 
-### **Week 1-2**: Start with Projects 1-3
+### **Week 1-2**: Start with Projects 1-4
 - Focus on basic DRF concepts
 - Understand serializers, viewsets, and basic CRUD
+- Learn complex relationships and business logic
 
-### **Week 3-4**: Move to Projects 4-6
+### **Week 3-4**: Move to Projects 5-7
 - Learn intermediate features
-- Practice complex relationships and filtering
+- Practice social features and content management
+- Master booking systems and payment integration
 
-### **Week 5-6**: Complete Projects 7-9
+### **Week 5-6**: Complete Projects 8-10
 - Master advanced concepts
 - Focus on system design and scalability
+- Learn enterprise patterns and optimization
 
 ## 🛠️ Technologies You'll Practice
 
