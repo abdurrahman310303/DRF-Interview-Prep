@@ -1,0 +1,418 @@
+{
+    "info": {
+        "name": "Todo List API - DRF Interview Prep",
+        "description": "Complete API testing collection for Django REST Framework Todo List project",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000"
+        },
+        {
+            "key": "api_url",
+            "value": "{{base_url}}/api"
+        }
+    ],
+    "item": [
+        {
+            "name": "1. User Authentication",
+            "item": [
+                {
+                    "name": "User Registration",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"testuser\",\n    \"email\": \"test@example.com\",\n    \"password\": \"testpass123\",\n    \"password_confirm\": \"testpass123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/register/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "register",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "User Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"testpass123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/login/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "login",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "User Logout",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/users/logout/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                "logout",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get User Profile",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/users/profile/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                "profile",
+                                ""
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "2. Todo CRUD Operations",
+            "item": [
+                {
+                    "name": "Create Todo",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Learn Django REST Framework\",\n    \"description\": \"Complete the todo list API project\",\n    \"due_date\": \"2024-01-20\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/todos/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "todos",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "List All Todos",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/todos/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "todos",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Get Specific Todo",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/todos/1/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "todos",
+                                "1",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Update Todo",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Learn Django REST Framework - UPDATED\",\n    \"description\": \"Complete the todo list API project with improvements\",\n    \"due_date\": \"2024-01-25\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/todos/1/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "todos",
+                                "1",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Toggle Todo Completion",
+                    "request": {
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"completed\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/todos/1/toggle/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "todos",
+                                "1",
+                                "toggle",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Delete Todo",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/todos/2/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "todos",
+                                "2",
+                                ""
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "3. Filtering and Search",
+            "item": [
+                {
+                    "name": "Filter by Completion Status",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/todos/?completed=true",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "todos",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "completed",
+                                    "value": "true"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Search by Title",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/todos/?search=Learn",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "todos",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "search",
+                                    "value": "Learn"
+                                }
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Order by Creation Date",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/todos/?ordering=-created_at",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "todos",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "ordering",
+                                    "value": "-created_at"
+                                }
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "4. Error Handling",
+            "item": [
+                {
+                    "name": "Unauthorized Access",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/todos/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "todos",
+                                ""
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "Invalid Registration Data",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"test\",\n    \"email\": \"invalid-email\",\n    \"password\": \"123\",\n    \"password_confirm\": \"456\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/register/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "register",
+                                ""
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}
