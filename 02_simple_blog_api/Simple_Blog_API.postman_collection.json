@@ -1,0 +1,1052 @@
+{
+    "info": {
+        "name": "Simple Blog API - DRF Interview Prep",
+        "description": "Complete API testing collection for Django REST Framework Blog API project. This collection covers all endpoints including user management, categories, posts, comments, and search functionality.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000"
+        },
+        {
+            "key": "api_url",
+            "value": "{{base_url}}/api"
+        }
+    ],
+    "item": [
+        {
+            "name": "1. User Management",
+            "description": "User registration, authentication, and profile management endpoints",
+            "item": [
+                {
+                    "name": "User Registration",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"testuser\",\n    \"email\": \"test@example.com\",\n    \"password\": \"testpass123\",\n    \"password_confirm\": \"testpass123\",\n    \"bio\": \"A test user for the blog API\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/users/register/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                "register",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "User Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"testpass123\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/users/login/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                "login",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "User Logout",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/users/logout/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                "logout",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get User Profile",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/users/profile/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                "profile",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update User Profile",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"bio\": \"Updated bio for the test user\",\n    \"profile_picture\": null\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/users/profile/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                "profile",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List All Users",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/users/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "2. Categories",
+            "description": "Category management endpoints for blog post categories",
+            "item": [
+                {
+                    "name": "List All Categories",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/categories/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "categories",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Category",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Technology\",\n    \"description\": \"Technology-related blog posts\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/categories/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "categories",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Another Category",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Programming\",\n    \"description\": \"Programming and software development posts\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/categories/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "categories",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Category by Slug",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/categories/technology/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "categories",
+                                "technology",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Category",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"name\": \"Technology\",\n    \"description\": \"Updated description for technology category\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/categories/technology/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "categories",
+                                "technology",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Category",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/categories/programming/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "categories",
+                                "programming",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "3. Blog Posts",
+            "description": "Blog post CRUD operations and custom actions",
+            "item": [
+                {
+                    "name": "List All Posts",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/posts/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Blog Post",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Getting Started with Django REST Framework\",\n    \"content\": \"Django REST Framework is a powerful toolkit for building Web APIs. It provides a set of tools and utilities that make it easy to build robust, scalable APIs.\\n\\nIn this post, we'll explore the basics of DRF, including serializers, viewsets, and routers. We'll also look at how to implement authentication, permissions, and filtering.\",\n    \"excerpt\": \"Learn the basics of building APIs with Django REST Framework\",\n    \"status\": \"draft\",\n    \"categories\": [1]\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/posts/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Another Post",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Advanced DRF Features\",\n    \"content\": \"Once you've mastered the basics of Django REST Framework, it's time to explore advanced features. This includes custom permissions, nested serializers, and advanced filtering.\\n\\nWe'll also look at how to implement custom actions and optimize your API performance.\",\n    \"excerpt\": \"Explore advanced features of Django REST Framework\",\n    \"status\": \"draft\",\n    \"categories\": [1]\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/posts/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Post by Slug",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/posts/getting-started-with-django-rest-framework/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                "getting-started-with-django-rest-framework",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Post",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"Getting Started with Django REST Framework - UPDATED\",\n    \"content\": \"Django REST Framework is a powerful toolkit for building Web APIs. It provides a set of tools and utilities that make it easy to build robust, scalable APIs.\\n\\nIn this post, we'll explore the basics of DRF, including serializers, viewsets, and routers. We'll also look at how to implement authentication, permissions, and filtering.\\n\\nThis post has been updated with additional information and examples.\",\n    \"excerpt\": \"Learn the basics of building APIs with Django REST Framework - Updated\",\n    \"status\": \"draft\",\n    \"categories\": [1]\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/posts/getting-started-with-django-rest-framework/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                "getting-started-with-django-rest-framework",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Publish Post",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/posts/getting-started-with-django-rest-framework/publish/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                "getting-started-with-django-rest-framework",
+                                "publish",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Like Post",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/posts/getting-started-with-django-rest-framework/like/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                "getting-started-with-django-rest-framework",
+                                "like",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Post",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/posts/advanced-drf-features/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                "advanced-drf-features",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "4. Comments",
+            "description": "Comment management for blog posts",
+            "item": [
+                {
+                    "name": "List All Comments",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/comments/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "comments",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Comment",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"content\": \"Great post! This really helped me understand DRF basics.\",\n    \"post\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/comments/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "comments",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Another Comment",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"content\": \"I'm looking forward to the advanced features post!\",\n    \"post\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/comments/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "comments",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get Comment by ID",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/comments/1/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "comments",
+                                "1",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Comment",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"content\": \"Excellent post! This really helped me understand DRF basics. Looking forward to more content.\",\n    \"post\": 1\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/comments/1/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "comments",
+                                "1",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete Comment",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/comments/2/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "comments",
+                                "2",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "5. Search and Filtering",
+            "description": "Advanced search and filtering capabilities",
+            "item": [
+                {
+                    "name": "Search Posts by Content",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/search/?q=django",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "search",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "q",
+                                    "value": "django"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Search Posts by Title",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/search/?q=getting started",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "search",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "q",
+                                    "value": "getting started"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Filter Posts by Status",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/posts/?status=published",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "status",
+                                    "value": "published"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Filter Posts by Category",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/posts/?categories=1",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "categories",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Order Posts by Creation Date",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/posts/?ordering=-created_at",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "ordering",
+                                    "value": "-created_at"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Order Posts by Title",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/posts/?ordering=title",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "ordering",
+                                    "value": "title"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Pagination Test",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/posts/?page=1",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                ""
+                            ],
+                            "query": [
+                                {
+                                    "key": "page",
+                                    "value": "1"
+                                }
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "6. Error Handling Tests",
+            "description": "Test various error scenarios and edge cases",
+            "item": [
+                {
+                    "name": "Unauthorized Access (No Login)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/posts/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Invalid Registration Data",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"test\",\n    \"email\": \"invalid-email\",\n    \"password\": \"123\",\n    \"password_confirm\": \"456\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/users/register/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                "register",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Invalid Login Credentials",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"nonexistent\",\n    \"password\": \"wrongpassword\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/users/login/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "users",
+                                "login",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Access Non-existent Post",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{api_url}}/posts/non-existent-post/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                "non-existent-post",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Create Post Without Required Fields",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"title\": \"\",\n    \"content\": \"\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{api_url}}/posts/",
+                            "host": [
+                                "{{api_url}}"
+                            ],
+                            "path": [
+                                "posts",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ]
+}
