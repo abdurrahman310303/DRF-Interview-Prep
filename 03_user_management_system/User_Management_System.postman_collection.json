@@ -1,0 +1,746 @@
+{
+    "info": {
+        "_postman_id": "user-management-system-collection",
+        "name": "User Management System API",
+        "description": "Complete Postman collection for testing the User Management System API with JWT authentication and role-based access control.",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Authentication",
+            "item": [
+                {
+                    "name": "User Registration",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"testuser\",\n    \"email\": \"test@example.com\",\n    \"password\": \"StrongPass123!\",\n    \"password_confirm\": \"StrongPass123!\",\n    \"first_name\": \"Test\",\n    \"last_name\": \"User\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/register/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "register",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "User Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"testuser\",\n    \"password\": \"StrongPass123!\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/login/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "login",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Admin Login",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"username\": \"admin\",\n    \"password\": \"adminpass123!\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/login/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "login",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Change Password",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"old_password\": \"StrongPass123!\",\n    \"new_password\": \"NewStrongPass456!\",\n    \"new_password_confirm\": \"NewStrongPass456!\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/change-password/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "change-password",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Request Password Reset",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email\": \"test@example.com\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/password-reset/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "password-reset",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Confirm Password Reset",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"token\": \"reset_token_here\",\n    \"new_password\": \"NewPassword123!\",\n    \"new_password_confirm\": \"NewPassword123!\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/password-reset-confirm/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "password-reset-confirm",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Refresh Token",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"refresh\": \"{{refresh_token}}\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/token/refresh/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "token-refresh",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "User Logout",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/auth/logout/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "auth",
+                                "logout",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Users",
+            "item": [
+                {
+                    "name": "Get Current User",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/users/me/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                "me",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List Users (Admin)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/users/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get User Details",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/users/{{user_id}}/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                "{{user_id}}",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update User Role (Admin)",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_access_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"role\": \"moderator\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/users/{{user_id}}/role/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                "{{user_id}}",
+                                "role",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Activate User (Admin/Moderator)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/users/{{user_id}}/activate/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                "{{user_id}}",
+                                "activate",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Deactivate User (Admin/Moderator)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/users/{{user_id}}/deactivate/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                "{{user_id}}",
+                                "deactivate",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Verify User (Admin/Moderator)",
+                    "request": {
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/users/{{user_id}}/verify/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                "{{user_id}}",
+                                "verify",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Get User Statistics (Admin)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/users/stats/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                "stats",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Delete User (Admin)",
+                    "request": {
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/users/{{user_id}}/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "users",
+                                "{{user_id}}",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Profiles",
+            "item": [
+                {
+                    "name": "Get Profile Details",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/profiles/{{profile_id}}/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "profiles",
+                                "{{profile_id}}",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Profile",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"bio\": \"Updated bio information\",\n    \"location\": \"New York, NY\",\n    \"website\": \"https://example.com\",\n    \"twitter\": \"@testuser\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/profiles/{{profile_id}}/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "profiles",
+                                "{{profile_id}}",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Profile Privacy",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"profile_visibility\": \"public\",\n    \"show_email\": true,\n    \"show_phone\": false,\n    \"show_location\": true\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/profiles/{{profile_id}}/privacy/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "profiles",
+                                "{{profile_id}}",
+                                "privacy",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "Update Profile Preferences",
+                    "request": {
+                        "method": "PUT",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{access_token}}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"email_notifications\": true,\n    \"newsletter_subscription\": false,\n    \"language\": \"en\",\n    \"timezone\": \"America/New_York\"\n}"
+                        },
+                        "url": {
+                            "raw": "{{base_url}}/api/profiles/{{profile_id}}/preferences/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "profiles",
+                                "{{profile_id}}",
+                                "preferences",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List Public Profiles",
+                    "request": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                            "raw": "{{base_url}}/api/profiles/public/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "profiles",
+                                "public",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "List Profiles (Admin/Moderator)",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/api/profiles/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "api",
+                                "profiles",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        },
+        {
+            "name": "Admin Operations",
+            "item": [
+                {
+                    "name": "Admin Dashboard",
+                    "request": {
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {{admin_access_token}}"
+                            }
+                        ],
+                        "url": {
+                            "raw": "{{base_url}}/admin/",
+                            "host": [
+                                "{{base_url}}"
+                            ],
+                            "path": [
+                                "admin",
+                                ""
+                            ]
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "event": [
+        {
+            "listen": "test",
+            "script": {
+                "exec": [
+                    "// Auto-save tokens from login responses",
+                    "if (pm.response.code === 200) {",
+                    "    const responseJson = pm.response.json();",
+                    "    if (responseJson.access) {",
+                    "        pm.environment.set('access_token', responseJson.access);",
+                    "    }",
+                    "    if (responseJson.refresh) {",
+                    "        pm.environment.set('refresh_token', responseJson.refresh);",
+                    "    }",
+                    "    if (responseJson.user && responseJson.user.role === 'admin') {",
+                    "        pm.environment.set('admin_access_token', responseJson.access);",
+                    "    }",
+                    "}"
+                ],
+                "type": "text/javascript"
+            }
+        }
+    ],
+    "variable": [
+        {
+            "key": "base_url",
+            "value": "http://localhost:8000",
+            "type": "string"
+        },
+        {
+            "key": "access_token",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "refresh_token",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "admin_access_token",
+            "value": "",
+            "type": "string"
+        },
+        {
+            "key": "user_id",
+            "value": "1",
+            "type": "string"
+        },
+        {
+            "key": "profile_id",
+            "value": "1",
+            "type": "string"
+        }
+    ]
+}
